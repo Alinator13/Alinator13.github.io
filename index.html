@@ -25,13 +25,14 @@
          'onReady': onPlayerReady
        },
        playerVars: {
-         controls: 0,
-         disablekb: 1,
-         fs: 0,
-         iv_load_policy: 3,
-         loop: 1,
-         modestbranding: 1,
-         playsinline: 0
+         'controls': 0,
+         'disablekb': 1,
+         'fs': 0,
+         'iv_load_policy': 3,
+         'loop': 1,
+         'modestbranding': 1,
+         'playsinline': 0,
+         'showInfo': 0
        }
      });
    }
@@ -41,7 +42,6 @@
      event.target.playVideo();
      event.target.unMute();
      event.target.setVolume(100);
-
    }
 
    function stopVideo() {

@@ -22,7 +22,13 @@
      player = new YT.Player('player', {
        videoId: 'eL-Um3YMahY',
        events: {
-         'onReady': onPlayerReady
+         'onReady': onPlayerReady,
+         'onStateChange':
+            function(e) {
+               if (e.data === YT.PlayerState.ENDED) {
+                  player.playVideo();
+               }
+            }
        },
        playerVars: {
          'controls': 0,

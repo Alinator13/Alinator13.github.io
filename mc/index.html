@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Minecraft IP</title>
+<style>
+body {
+  background-image: url('background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.button {
+	font-size: 40px;
+	position:fixed;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, 0%);
+}
+.toast-notification{
+  min-width: 200px;
+  height:auto;
+  background-color:white;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  top:0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  margin-top:20px;
+  margin-left:0;
+  position:fixed;
+  z-index:1;
+  display:flex;
+  flex-direction:row;
+}
+
+.message-container{
+  width:auto;
+  padding-top:13px;
+  padding-bottom: 13px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family:'Roboto';
+  font-size: 30px;
+  color:white;
+}
+</style>
+</head>
+<body>
+<center>
+<button id='IPAddrBtn' class='button'>0.tcp.ngrok.io:15069</button>
+</center>
+<script>
+class Toast {
+  constructor(message,time){
+    this.message = message;
+    this.time = time;
+    this.element = null;
+    var element = document.createElement('div');
+    element.className = "toast-notification";
+    this.element = element;
+    var countElements = document.getElementsByClassName("toast-notification");
+    
+    element.style.opacity=0.8;
+    
+    element.style.backgroundColor = "#71797E";
+    
+    var message = document.createElement("div");
+    message.className = "message-container";
+    message.textContent = this.message;
+    
+    element.appendChild(message);
+    
+    var close = document.createElement("div");
+    close.className = "close-notification";
+    element.append(close);
+	
+	if (countElements.length > 0) {
+		element.style.marginTop = 20 + (countElements.length * 70) + "px";
+    } 
+	
+    document.body.appendChild(element);
+    
+    setTimeout(function() {
+      element.remove();
+    }, this.time);
+    
+    close.addEventListener("click",()=>{
+      element.remove();
+    })
+  }
+  
+}
+
+document.querySelector("#IPAddrBtn").addEventListener("click",()=>{
+  navigator.clipboard.writeText(document.getElementById("IPAddrBtn").innerHTML);
+  new Toast("IP address copied to clipboard ",5000);
+}) 
+
+</script>
+</body>
+</html>
